@@ -1,5 +1,6 @@
 $(function() {
 
+	// Check if Geolocation is supported
 	if ("geolocation" in navigator) {
 		console.log("supported");
 		navigator.geolocation.getCurrentPosition(success, fail);
@@ -16,10 +17,18 @@ $(function() {
 			units = "&units=imperial",
 			base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon=" + lon;
 		var fullUrl = base + id + units;
-		console.log(fullUrl);
+		$.getJSON( fullUrl, function( data ) {
+		  var weatherArr = [];
+		  $.each( data, function( key, val ) {
+		    weatherArr.push("<br>Key: " + key +", Value: " + val );
+		  });
+		$("#city-title").html(weatherArr);
+		console.log(weatherArr);
+		});
 	}
 	function fail() {
 		alert("Failed to get your location. Is your browser blocking it?");
 	}
+
 
  }); //doc-ready
