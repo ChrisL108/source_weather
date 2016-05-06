@@ -21,7 +21,6 @@ $(function() {
 		 	
 			$("#city-title").html(data["name"]);
 			$("#city-temp").html(data["main"]["temp"] + "F");
-			console.log(typeof data["main"]);
 		});
 	}
 	function fail() {
