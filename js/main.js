@@ -18,12 +18,10 @@ $(function() {
 			base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon=" + lon;
 		var fullUrl = base + id + units;
 		$.getJSON( fullUrl, function( data ) {
-		  var weatherArr = [];
-		  $.each( data, function( key, val ) {
-		    weatherArr.push("<br>Key: " + key +", Value: " + val );
-		  });
-		$("#city-title").html(weatherArr);
-		console.log(weatherArr);
+		 	
+			$("#city-title").html(data["name"]);
+			$("#city-temp").html(data["main"]["temp"] + "F");
+			console.log(typeof data["main"]);
 		});
 	}
 	function fail() {
