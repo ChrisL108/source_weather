@@ -1,6 +1,17 @@
 $(function() {
 
+	var $contribute = $("#contribute"),
+	    $github = $("#github");
+
+	$github.hover(
+			function() {$contribute.fadeIn("slow");},
+			function() {$contribute.fadeOut("fast");} 
+			);          $contribute.hide();
+
 	// Check if Geolocation is supported
+	// Note: Must be using HTTPS instead of HTTP for 
+	// geolocation to allow location, etc.
+
 	if ("geolocation" in navigator) {
 		console.log("supported");
 		navigator.geolocation.getCurrentPosition(success, fail);
