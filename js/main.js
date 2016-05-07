@@ -10,7 +10,7 @@ $(function() {
 
 	// Check if Geolocation is supported
 	// Note: Must be using HTTPS instead of HTTP for 
-	// geolocation to allow location, etc.
+	// geolocation to allow location.
 
 	if ("geolocation" in navigator) {
 		console.log("supported");
