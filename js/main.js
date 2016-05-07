@@ -4,9 +4,9 @@ $(function() {
 	    $github = $("#github");
 
 	$github.hover(
-			function() {$contribute.fadeIn("slow");},
-			function() {$contribute.fadeOut("fast");} 
-			);          $contribute.hide();
+		function() {$contribute.fadeIn("slow");}, 
+		function() {$contribute.fadeOut("fast");} 
+	);
 
 	// Check if Geolocation is supported
 	// Note: Must be using HTTPS instead of HTTP for 
@@ -26,16 +26,20 @@ $(function() {
 		// Build URL using user long/lat and my API key
 		var id = "&APPID=73534e4671149a5202f94d9eaf058256",
 			units = "&units=imperial",
-			base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon=" + lon;
+			base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ 
+					lat + "&lon=" + lon;
 		var fullUrl = base + id + units;
+		console.log(fullUrl);
 		$.getJSON( fullUrl, function( data ) {
 		 	
-			$("#city-title").html(data["name"]);
-			$("#city-temp").html(data["main"]["temp"] + "F");
+			$("#city-title").html( data["name"]  );
+			$("#city-temp").html(  data["main"]["temp"] + " F<br>" +
+								   data["weather"][0]["main"]  );
+			console.log(data["weather"][0]);
 		});
 	}
 	function fail() {
-		alert("Failed to get your location. Is your browser blocking it?");
+		alert("Failed to get your location. Some browsers");
 	}
 
 
