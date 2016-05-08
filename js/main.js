@@ -2,7 +2,14 @@ $(function() {
 
 	var $contribute = $("#contribute"),
 	    $github = $("#github");
-
+	$contribute.hide();
+	$("header img").animate({
+		opacity: 0.6,
+		width: '300px'},
+		'slow', function() {
+			$(this).animate({opacity: 1, width:'462px'}, 'slow');
+	});
+	
 	$github.hover(
 		function() {$contribute.fadeIn("slow");}, 
 		function() {$contribute.fadeOut("fast");} 
@@ -18,6 +25,7 @@ $(function() {
 	} else {
 		alert("Your browser doesn't support Geolocation :/");
 	}
+
 	// Different conditions
 	// Clear, Clouds
 	function success(position) {
@@ -31,18 +39,21 @@ $(function() {
 					lat + "&lon=" + lon;
 		var fullUrl = base + id + units;
 		console.log( fullUrl ); // for testing 
+		 //  $.getJSON( url ) --> displayWeather()
 		$.getJSON( fullUrl, function( data ) { displayWeather(data); });
 	};
+
 	function fail() {
 		alert("Failed to get your location. Some browsers");
 	};
+
 	// Display data
 	function displayWeather(data) {
-		$("#city-title").html( data["name"]  );
+		$("#city-title").text( data["name"]  );
 		$("#city-temp").html(  data["main"]["temp"] + " F<br>" +
 							   data["weather"][0]["main"]  );
-		console.log(data["weather"][0]);
 	};
+
 
 
  }); //doc-ready

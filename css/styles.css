@@ -1,6 +1,7 @@
 html,
 body {
-  height: 100%;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24px;
   background:radial-gradient(rgb(162, 192, 193), #70AAE0);
   background: -webkit-radial-gradient(rgb(162, 192, 193), #70AAE0);
   text-align: center;
@@ -28,4 +29,7 @@ header img {
 }
 #github span {
 	font-size: 15px;
+}
+#main-section h3 {
+	clear: none;
 }
