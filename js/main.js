@@ -5,7 +5,7 @@ $(function() {
 	$contribute.hide();
 	$("header img").animate({
 		opacity: 0.6,
-		width: '300px'},
+		width: '+=200px'},
 		'slow', function() {
 			$(this).animate({opacity: 1, width:'462px'}, 'slow');
 	});
