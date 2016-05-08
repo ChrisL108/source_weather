@@ -49,7 +49,7 @@ $(function() {
 
 	// Display data
 	function displayWeather(data) {
-		$("#city-title").text( data["name"]  );
+		$("#city-title").html( data["name"]  );
 		$("#city-temp").html(  data["main"]["temp"] + " F<br>" +
 							   data["weather"][0]["main"]  );
 	};
