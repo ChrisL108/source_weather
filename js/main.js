@@ -11,8 +11,8 @@ $(function() {
 	});
 	
 	$github.hover(
-		function() {$contribute.fadeIn("slow");}, 
-		function() {$contribute.fadeOut("fast");} 
+		function() {$contribute.stop(true).fadeIn("slow");}, 
+		function() {$contribute.stop(true).fadeOut("fast");} 
 	);
 
 	// Check if Geolocation is supported
