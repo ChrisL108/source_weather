@@ -1,5 +1,3 @@
-$(function() {
-
 	var $contribute = $("#contribute"),
 	    $github = $("#github"),
 	    $body = $('body');
@@ -85,5 +83,3 @@ $(function() {
 		}
 
 	};
-
- }); //doc-ready
