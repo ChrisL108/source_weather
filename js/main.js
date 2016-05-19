@@ -43,6 +43,7 @@
 		$.getJSON( fullUrl, function( data ) { displayWeather(data); });
 	};
 
+	// Fallback ip-api-location if geolocation is blocked
 	function fail() {
 		$.getJSON("http://ip-api.com/json", function(ipdata) {
 			var lat = ipdata.lat;
