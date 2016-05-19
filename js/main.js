@@ -47,7 +47,7 @@
 		$.getJSON("http://ip-api.com/json", function(ipdata) {
 			var lat = ipdata.lat;
 			var lon = ipdata.lon;
-			success(null, lat, lon);
+			lat, lon ? success(null, lat, lon) : console.log("Ip-Api failed");
 
 		});
 	};
