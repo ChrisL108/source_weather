@@ -10,6 +10,10 @@ body {
   background-color: rgb(162, 192, 193);
   transition: all 0.5s ease;
 }
+#content-wrapper {
+	min-width: 100%;
+	min-height: 100%;
+}
 #main-section {
 	text-align: center;
 }

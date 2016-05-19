@@ -29,8 +29,8 @@
 	// Clear, Clouds, Rain
 	function success(position, lat, lon) {
 		// Get User Coordinates
-		var lon = lon || position.coords.longitude;
-		var lat = lat || position.coords.latitude;
+		var lon = lon || position.coords.longitude,
+			lat = lat || position.coords.latitude;
 		// Build URL using user long/lat
 		var id = "&APPID=73534e4671149a5202f94d9eaf058256",
 			units = "&units=imperial",
