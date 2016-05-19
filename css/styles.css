@@ -1,18 +1,20 @@
-
+* {
+	margin: 0;
+	padding: 0;
+}
 body {
   font-family: 'Permanent Marker', cursive;
   font-size: 24px;
   text-align: center;
   min-height: 100%;
-  width: 100%;
-  height: 100%; 
+  min-width: 100%;
   
   background-color: rgb(162, 192, 193);
-  transition: all 0.5s ease;
+
 }
 #content-wrapper {
-	min-width: 100%;
-	min-height: 100%;
+	width: 100%;
+	height: 100%;
 }
 #main-section {
 	text-align: center;
@@ -44,11 +46,15 @@ header img {
 }
 
 .rain {
-  background: radial-gradient(#2196F3, #1C2261);
-  background: -webkit-radial-gradient(#2196F3, #1C2261);
+  background: radial-gradient(rgb(100, 140, 169), #1C2261);
+  background: -webkit-radial-gradient(rgb(100, 140, 169), #1C2261);
   color:yellow;
 }
 .clouds {
-  background:radial-gradient(rgb(160, 160, 160), #424242);
-  background: -webkit-radial-gradient(rgb(160, 160, 160), #424242);
+  background:radial-gradient(rgb(113, 113, 113), #424242);
+  background: -webkit-radial-gradient(rgb(113, 113, 113), #424242);
+  color: rgb(51, 66, 111); 
+}
+.clear {
+	background: url("../img/clear_sky.jpg") no-repeat;
 }

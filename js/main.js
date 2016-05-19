@@ -25,8 +25,7 @@
 
 	}
 
-	// Different conditions
-	// Clear, Clouds, Rain
+// SUCCESS - geolocation works
 	function success(position, lat, lon) {
 		// Get User Coordinates
 		var lon = lon || position.coords.longitude,
@@ -39,32 +38,29 @@
 		var fullUrl = base + id + units;
 		console.log( fullUrl ); // log URL for testing 
 
-		//  $.getJSON() w/ url & pass to display function
+		//  $.getJSON() w/ new url & pass to displayWeather()
 		$.getJSON( fullUrl, function( data ) { displayWeather(data); });
 	};
 
-	// Fallback ip-api-location if geolocation is blocked
-	function fail() {
-		$.getJSON("http://ip-api.com/json", function(ipdata) {
-			var lat = ipdata.lat;
-			var lon = ipdata.lon;
-			lat, lon ? success(null, lat, lon) : console.log("Ip-Api failed");
+// Display weather data
 
-		});
-	};
-
-	// Display data
 	function displayWeather(data) {
 		var city = data["name"];
 		var temp = data["main"]["temp"];
 		var conditions = data["weather"][0]["main"];
+		var description = data["weather"][0]["description"];
 
 		$("#city-title").html( city  );
 		$("#city-temp").html( temp  + " F&deg;" );
-		$("#weatherSum").html(  conditions  );
+		$("#weatherSum").html(  description  );
 
+		animateWeather(conditions);
+	};  // \displayWeather()
 
-		// Animate based on weather
+// Animate page based on weather 
+
+	function animateWeather(conditions) {
+
 		switch(conditions) {
 			case "Clear": 
 				break;
@@ -75,7 +71,8 @@
 				}, 1500, function() {
 					$("#city-temp").animate({ 
 						color: "rgb(74, 74, 210)"}, 'slow');
-				});
+					}
+				);
 				break;
 
 			case "Clouds":
@@ -85,9 +82,19 @@
 				}, 1500, function() {
 					$("#city-temp").animate({
 					color: "rgb(187, 187, 187)" }, 'slow');
-				});
+					}
+				);
 				break;
 		}
-
-	};  // end displayWeather()
+	}
+	
+// FAIL - get location through ip-api
+//		  if geolocation is blocked
+	function fail() {
+		$.getJSON("http://ip-api.com/json", function(ipdata) {
+			var lat = ipdata.lat;
+			var lon = ipdata.lon;
+			lat, lon ? success(null, lat, lon) : console.log("Ip-Api failed");
+		});
+	};
 
