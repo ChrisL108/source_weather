@@ -21,29 +21,35 @@
 		console.log("supported");
 		navigator.geolocation.getCurrentPosition(success, fail);
 	} else {
-		alert("Your browser doesn't support Geolocation");
+		console.log("Geolocation is not supported");
+
 	}
 
 	// Different conditions
 	// Clear, Clouds, Rain
-	function success(position) {
+	function success(position, lat, lon) {
 		// Get User Coordinates
-		var lon = position.coords.longitude;
-		var lat = position.coords.latitude;
+		var lon = lon || position.coords.longitude;
+		var lat = lat || position.coords.latitude;
 		// Build URL using user long/lat
 		var id = "&APPID=73534e4671149a5202f94d9eaf058256",
 			units = "&units=imperial",
 			base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ 
 					lat + "&lon=" + lon;
 		var fullUrl = base + id + units;
-		console.log( fullUrl ); // for testing 
+		console.log( fullUrl ); // log URL for testing 
 
-		//  $.getJSON( url ) ..then.. displayWeather()
+		//  $.getJSON() w/ url & pass to display function
 		$.getJSON( fullUrl, function( data ) { displayWeather(data); });
 	};
 
 	function fail() {
-		alert("Failed to get location. Make sure it isn't blocked");
+		$.getJSON("http://ip-api.com/json", function(ipdata) {
+			var lat = ipdata.lat;
+			var lon = ipdata.lon;
+			success(null, lat, lon);
+
+		});
 	};
 
 	// Display data
@@ -82,4 +88,5 @@
 				break;
 		}
 
-	};
+	};  // end displayWeather()
+
