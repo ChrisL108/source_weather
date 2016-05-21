@@ -5,7 +5,7 @@
 
 	// Hide 'contribute' text on start
 	$contribute.hide();
-
+	$("#weatherIcons").hide();
 	// Animate header-logo in 
 	$("header img").animate({
 		opacity: 0.6,
