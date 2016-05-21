@@ -74,6 +74,14 @@
 
 		switch(conditions) {
 			case "Clear": 
+				$body.animate({
+					backgroundColor : "rgb(239,222,130)",
+					color : "white"
+				}, 1500, function() {
+					$("#city-temp").animate({ 
+						color: "rgb(8, 157, 246)"}, 'slow');
+					}
+				);
 				break;
 			case "Rain" :
 				$body.animate({
