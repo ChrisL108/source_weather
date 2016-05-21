@@ -1,22 +1,25 @@
+	
 	var $contribute = $("#contribute"),
 	    $github = $("#github"),
 	    $body = $('body');
 
+	// Hide 'contribute' text on start
 	$contribute.hide();
+
+	// Animate header-logo in 
 	$("header img").animate({
 		opacity: 0.6,
 		width: '+=100px'
 	},'slow', function() {
 			$(this).animate({opacity: 1, width:'462px'}, 'slow');
 	});
-	
+	// GitHub link
 	$github.hover(
 		function() {$contribute.stop(true).fadeIn("slow");}, 
 		function() {$contribute.stop(true).fadeOut("fast");} 
 	);
 
 	// Check if Geolocation is supported - need to be using HTTPS 
-
 	if ("geolocation" in navigator) {
 		console.log("supported");
 		navigator.geolocation.getCurrentPosition(success, fail);
@@ -38,12 +41,21 @@
 		var fullUrl = base + id + units;
 		console.log( fullUrl ); // log URL for testing 
 
-		//  $.getJSON() w/ new url & pass to displayWeather()
+		//  $.getJSON() w/ new url & update displayWeather()
 		$.getJSON( fullUrl, function( data ) { displayWeather(data); });
 	};
 
-// Display weather data
+// FAIL - get location through ip-api
+//		  if geolocation is blocked
+	function fail() {
+		$.getJSON("http://ip-api.com/json", function(ipdata) {
+			var lat = ipdata.lat;
+			var lon = ipdata.lon;
+			lat, lon ? success(null, lat, lon) : console.log("Ip-Api failed");
+		});
+	};
 
+// Display weather data
 	function displayWeather(data) {
 		var city = data["name"];
 		var temp = data["main"]["temp"];
@@ -58,7 +70,6 @@
 	};  // \displayWeather()
 
 // Animate page based on weather 
-
 	function animateWeather(conditions) {
 
 		switch(conditions) {
@@ -88,13 +99,5 @@
 		}
 	}
 	
-// FAIL - get location through ip-api
-//		  if geolocation is blocked
-	function fail() {
-		$.getJSON("http://ip-api.com/json", function(ipdata) {
-			var lat = ipdata.lat;
-			var lon = ipdata.lon;
-			lat, lon ? success(null, lat, lon) : console.log("Ip-Api failed");
-		});
-	};
+
 
