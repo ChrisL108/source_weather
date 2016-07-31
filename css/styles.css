@@ -2,59 +2,40 @@
 	margin: 0;
 	padding: 0;
 }
+html, body {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 24px;
+}
 body {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 24px;
-  text-align: center;
-  min-height: 100%;
-  min-width: 100%;
-  
-  background-color: rgb(162, 192, 193);
+	text-align: center;
+	min-height: 100%;
+	min-width: 100%;
+
+	background-color: rgb(162, 192, 193);
 
 }
 #content-wrapper {
-	width: 100%;
-	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
 }
-#main-section {
-	text-align: center;
-}
-/* LOGO */
-header {
-	margin: 0 auto;
-	height: 100px;
-}
-header img {
-	height: 300px;
-	margin: 0 auto;
-}
-/* github button */
-#github{
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	font-size: 23px;
-	color: black;
-}
-#github span {
-	font-size: 15px;
+#clear .fa {
+	font-size: 200px;
 }
 
-#city-title {
-	font-size: 34px;
-	padding: 30px;
-}
 
 .rain {
-  background: radial-gradient(rgb(100, 140, 169), #1C2261);
-  background: -webkit-radial-gradient(rgb(100, 140, 169), #1C2261);
-  color:yellow;
+	background: radial-gradient(rgb(100, 140, 169), #1C2261);
+	background: -webkit-radial-gradient(rgb(100, 140, 169), #1C2261);
+	color:yellow;
 }
 .clouds {
-  background:radial-gradient(rgb(113, 113, 113), #424242);
-  background: -webkit-radial-gradient(rgb(113, 113, 113), #424242);
-  color: rgb(51, 66, 111); 
+	background:radial-gradient(rgb(113, 113, 113), #424242);
+	background: -webkit-radial-gradient(rgb(113, 113, 113), #424242);
+	color: rgb(51, 66, 111); 
 }
 .clear {
-	background: url("../img/clear_sky.jpg") no-repeat;
+	
 }

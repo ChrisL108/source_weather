@@ -1,11 +1,15 @@
 	
+	
+	$(window).on("resize", function() {
+		$("body").height = $(window).height;
+	});
+	
 	var $contribute = $("#contribute"),
 	    $github = $("#github"),
 	    $body = $('body');
 
 	// Hide 'contribute' text on start
 	$contribute.hide();
-	$("#weatherIcons").hide();
 	// Animate header-logo in 
 	$("header img").animate({
 		opacity: 0.6,
@@ -14,7 +18,7 @@
 			$(this).animate({opacity: 1, width:'462px'}, 'slow');
 	});
 	// GitHub link
-	$github.hover(
+	$github.hover( 
 		function() {$contribute.stop(true).fadeIn("slow");}, 
 		function() {$contribute.stop(true).fadeOut("fast");} 
 	);
@@ -34,10 +38,11 @@
 		var lon = lon || position.coords.longitude,
 			lat = lat || position.coords.latitude;
 		// Build URL using user long/lat
-		var id = "&APPID=73534e4671149a5202f94d9eaf058256",
+		var base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ 
+					lat + "&lon=" + lon,
+			id = "&APPID=73534e4671149a5202f94d9eaf058256",
 			units = "&units=imperial",
-			base =  "http://api.openweathermap.org/data/2.5/weather?lat="+ 
-					lat + "&lon=" + lon;
+			
 		var fullUrl = base + id + units;
 		console.log( fullUrl ); // log URL for testing 
 

@@ -8,7 +8,7 @@
 <title>Source Weather</title>
 
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
 <!-- Font Awesome -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
 <!-- Font -->
@@ -22,17 +22,6 @@
     <![endif]-->
 </head>
 <body>
-
-<section id="weatherIcons" >
-	<!-- Clouds -->
-	<span class="glyphicon glyphicon-cloud"></span>
-	<!-- Globe -->
-	<span class="glyphicon glyphicon-globe"></span>
-	<!-- Lightning -->
-	<span class="glyphicon glyphicon-flash"></span>
-	<!-- Rain -->
-	<i class="fa fa-tint"></i>
-</section>
 
 <!-- GitHub Link -->
 <div id="github">
@@ -48,7 +37,7 @@
 			<!-- LOGO -->
 			<div class="row">
 				<div class="col-md-12">
-					<img class="img-responsive" src="img/logo-2.png" alt="source-weather-logo">
+					<img class="img-responsive" src="img/logo.png" alt="source-weather-logo">
 				</div> <!-- col-md-12 -->
 			</div> <!-- /row -->			
 		</div> <!-- /container -->
@@ -68,9 +57,28 @@
 				<span id="city-temp">Temperature</span> &amp;
 				<span id="weatherSum">Conditions</span>
 			</div>
+			<div id="currentWeather"></div>
 		</div><!-- /row -->
 	</div><!-- /container -->
 </main>
+
+<div id="clear">
+	<i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+</div>
+
+<div id="rain">
+	<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+	<i id="rain-drop1" class="fa fa-tint" aria-hidden="true"></i>
+	<i id="rain-drop2" class="fa fa-tint fa-4x" aria-hidden="true"></i>
+	<i id="rain-drop3" class="fa fa-tint fa-2x" aria-hidden="true"></i>
+</div>
+
+<div id="clouds">
+	<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+	<i class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+</div>
+
+
 
 </div> <!-- /content-wrapper -->
 
@@ -80,4 +88,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="js/main.js"></script>
 </body>
+
 </html>
