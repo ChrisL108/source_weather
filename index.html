@@ -6,20 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta description="weather app that finds weather based on user's latitude and longitude">
 <title>Source Weather</title>
-
-<!-- Bootstrap -->
-<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
 <!-- Font Awesome -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
 <!-- Font -->
 <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
 <!-- Custom -->
 <link href="css/styles.css" rel="stylesheet" type="text/css">
-<!-- IE9 -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 
@@ -30,53 +22,59 @@
 	</a><span id="contribute">Contribute</span>
 </div>
 
-<div id="content-wrapper" class="container-fluid">
+<div id="content-wrapper">
 
-<header>
-		<div class="container">
-			<!-- LOGO -->
-			<div class="row">
-				<div class="col-md-12">
-					<img class="img-responsive" src="img/logo.png" alt="source-weather-logo">
-				</div> <!-- col-md-12 -->
-			</div> <!-- /row -->			
-		</div> <!-- /container -->
-
-</header>
-
-<main>
-	<div class="container" id="main-section">
-		<div class="row">
+	
+	<img id="logo" width="400" src="img/logo.png" alt="source-weather-logo">
+		
+	<main>
+		<div id="main-section">
+			<!--Current Weather-->
+			<div id="current-weather"></div>
 			<!-- City -->
-			<div class="col-md-6 col-md-offset-3 text-center">
-				<span id="city-title">City</span> <br>
-				<span class="glyphicon glyphicon-chevron-down"></span>
-			</div>
+			<span id="city-title">City</span> <br>
+			<span class="glyphicon glyphicon-chevron-down"></span>
 			<!-- Temperature -->
-			<div class="col-md-6 col-md-offset-3 text-center">
-				<span id="city-temp">Temperature</span> &amp;
-				<span id="weatherSum">Conditions</span>
-			</div>
-			<div id="currentWeather"></div>
-		</div><!-- /row -->
-	</div><!-- /container -->
-</main>
+			<span id="city-temp">Temperature</span> &amp;
+			<span id="weatherSum">Conditions</span>
+		</div><!-- /container -->
+	</main>
 
-<div id="clear">
-	<i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
-</div>
+	<div id="clear" class="weather-icons">
+		<i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+	</div>
 
-<div id="rain">
-	<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
-	<i id="rain-drop1" class="fa fa-tint" aria-hidden="true"></i>
-	<i id="rain-drop2" class="fa fa-tint fa-4x" aria-hidden="true"></i>
-	<i id="rain-drop3" class="fa fa-tint fa-2x" aria-hidden="true"></i>
-</div>
+	<div id="rain" class="weather-icons">
+		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+		<i id="rain-drop1" class="fa fa-tint" aria-hidden="true"></i>
+		<i id="rain-drop2" class="fa fa-tint fa-1x" aria-hidden="true"></i>
+		<i id="rain-drop3" class="fa fa-tint fa-2x" aria-hidden="true"></i>
+	</div>
 
-<div id="clouds">
-	<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
-	<i class="fa fa-cloud fa-2x" aria-hidden="true"></i>
-</div>
+	<div id="clouds" class="weather-icons">
+		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+		<i class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+	</div>
+
+	<div id="snow" class="weather-icons">
+		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+		<i class="fa fa-asterisk fa-4x" aria-hidden="true"></i>
+		<i class="fa fa-asterisk" aria-hidden="true"></i>
+		<i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
+	</div>
+
+	<div id="my-buttons">
+		<button id="clear-btn">Clear</button>
+		<button id="clouds-btn">Clouds</button>
+		<button id="rain-btn">Rain</button>
+		<button id="snow-btn">Snow</button>
+	</div>
+
+	<form id="zip-wrapper">
+		<label for="zip">Or enter zip:</label>
+		<input id="zip" name="zip" type="text">
+		<input type="submit">
+	</form>
 
 
 
@@ -86,6 +84,7 @@
 <!-- jQuery & jQuery UI --> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="js/jquery-color.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 
