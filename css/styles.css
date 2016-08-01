@@ -24,30 +24,40 @@ body {
 }
 #logo {
 	align-self: center;
+	width: 400px;
+	margin-bottom: 20px;
+}
+#city-title {
+	padding: 30px;
+	margin-top: 40px;
 }
 
+.fa {
+	position: relative;
+}
 /*~~~~~~CLEAR*/
 .clear {
 	background-color: darkorange;
 	color: black;	
 }
-#clear .fa {
-	font-size: 200px;
+#clear-cloud {
+	position: absolute;
+	margin-left: -23px;
+	font-size: 80px;
+}
+.spin-slow {
+	animation: spin-slow 10s infinite linear;
 }
 
 /*~~~~~~RAIN*/
 .rain {
-	background-color: cadetblue;
-	color:black;
+	background-color: #5a608b;
+	color:#120d37;
 }
 /*rain cloud*/
 #rain .fa-cloud {
 	position: absolute;
 	margin-left: -23px;
-}
-@media (max-width: 1970px) {
-	#rain .fa-cloud {
-	}
 }
 #rain .fa-tint {
 	margin: 1rem auto;
@@ -65,9 +75,52 @@ body {
 	background-color: gray;
 	color: white;  
 }
+#clouds i {
+	position: relative;
+	text-shadow: 2px 2px 1px black;
+}
 
 /*~~~~~~~~SNOW*/
 .snow {
 	background-color: slategray;
 	color: deepskyblue;
+}
+
+@keyframes spin-slow {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+
+#zip-wrapper {
+	margin-top: 150px;
+}
+/*Buttons*/
+
+.btn {
+  background: none;
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  text-shadow: 3px 1px 1px #000000;
+  color: #ffffff;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #5c5c5c 2px;
+  text-decoration: none;
+}
+#my-buttons .btn {
+	font-size: 15px;
+}
+
+.btn:hover {
+  background: #6b6b6b;
+  color: black;
+  text-shadow: 1px 1px 1px #000000;
+  background-image: -webkit-linear-gradient(top, #6b6b6b, #d6d6d6);
+  background-image: -moz-linear-gradient(top, #6b6b6b, #d6d6d6);
+  background-image: -ms-linear-gradient(top, #6b6b6b, #d6d6d6);
+  background-image: -o-linear-gradient(top, #6b6b6b, #d6d6d6);
+  background-image: linear-gradient(to bottom, #6b6b6b, #d6d6d6);
+  text-decoration: none;
 }

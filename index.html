@@ -16,16 +16,16 @@
 <body>
 
 <!-- GitHub Link -->
-<div id="github">
+<!--<div id="github">
 	<a href="https://github.com/ChrisL108/source_weather" target="_blank">
 	<i class="fa fa-github fa-lg"></i>
 	</a><span id="contribute">Contribute</span>
-</div>
+</div>-->
 
 <div id="content-wrapper">
 
 	
-	<img id="logo" width="400" src="img/logo.png" alt="source-weather-logo">
+	<img id="logo" src="img/logo.png" alt="source-weather-logo">
 		
 	<main>
 		<div id="main-section">
@@ -41,40 +41,48 @@
 	</main>
 
 	<div id="clear" class="weather-icons">
-		<i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
-	</div>
+		<i id="clear-sun" class="fa fa-sun-o fa-2x spin-slow" aria-hidden="true"></i>
+		<i id="clear-cloud" class="fa fa-cloud fa-3x" aria-hidden="true"></i>
 
+	</div>
 	<div id="rain" class="weather-icons">
 		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
 		<i id="rain-drop1" class="fa fa-tint" aria-hidden="true"></i>
 		<i id="rain-drop2" class="fa fa-tint fa-1x" aria-hidden="true"></i>
 		<i id="rain-drop3" class="fa fa-tint fa-2x" aria-hidden="true"></i>
 	</div>
-
 	<div id="clouds" class="weather-icons">
-		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
-		<i class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+		<i id="cloud1" class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+		<i id="cloud2" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
 	</div>
-
 	<div id="snow" class="weather-icons">
-		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
-		<i class="fa fa-asterisk fa-4x" aria-hidden="true"></i>
-		<i class="fa fa-asterisk" aria-hidden="true"></i>
-		<i class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
+		<i id="snow-flake1" class="fa fa-asterisk fa-4x" aria-hidden="true"></i>
+		<i id="snow-flake2" class="fa fa-asterisk" aria-hidden="true"></i>
+		<i id="snow-flake3" class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
 	</div>
+	<div id="mist" class="weather-icons">
+		<i id="mist1" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+		<i id="mist2" class="fa fa-cloud fa-3x" aria-hidden="true"></i>
+		<i id="mist3" class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+		<i id="mist4" class="fa fa-cloud fa-3x" aria-hidden="true"></i>
+	</div>
+	
 
-	<div id="my-buttons">
-		<button id="clear-btn">Clear</button>
-		<button id="clouds-btn">Clouds</button>
-		<button id="rain-btn">Rain</button>
-		<button id="snow-btn">Snow</button>
-	</div>
+
 
 	<form id="zip-wrapper">
-		<label for="zip">Or enter zip:</label>
-		<input id="zip" name="zip" type="text">
-		<input type="submit">
+		<label for="zip">Zip Code:</label>
+		<input id="zip" name="zip" type="text"><br>
+		<button class="btn" type="submit">Submit</button>
 	</form>
+	<hr style=" margin: 30px 200px;">
+	<div id="my-buttons">
+		<button class="btn" id="clear-btn">Clear</button>
+		<button class="btn" id="clouds-btn">Clouds</button>
+		<button class="btn" id="rain-btn">Rain</button>
+		<button class="btn" id="snow-btn">Snow</button>
+		<button class="btn" id="mist-btn">Mist (in-progress)</button>
+	</div>
 
 
 

@@ -5,35 +5,16 @@ $(window).on("resize", function() {
 	$body.width = $(window).width;
 });
 
-$(document).ready(function() {
-	var $contribute = $("#contribute"),
-		$github = $("#github");
 
-	// Hide 'contribute' text on start
-	$contribute.hide();
-	// Animate header-logo in 
-	$("#logo").animate({
-		opacity: 0.6,
-		width: "+=100px"
-	},"slow", function() {
-		$(this).animate({opacity: 1, width:"462px"}, "slow");
-	});
-	// GitHub link
-	$github.hover(
-		function fadeInGithub() {
-			$contribute.stop(true).fadeIn("slow");
-		}, 
-		function fadeOutGithub() {
-			$contribute.stop(true).fadeOut("fast");
-		} 
-	);
+
+$(document).ready(function() {
 
 	// Check if Geolocation is supported - need to be using HTTPS 
 	if ("geolocation" in navigator) {
-		console.log("supported");
+		
 		navigator.geolocation.getCurrentPosition(success, fail);
 	} else {
-		console.log("Geolocation is not supported");
+		alert("Geolocation is not supported");
 
 	}
 
@@ -62,17 +43,18 @@ $(document).ready(function() {
 		$.getJSON("http://ip-api.com/json", function(ipdata) {
 			var lat = ipdata.lat;
 			var lon = ipdata.lon;
-			lat, lon ? success(null, lat, lon) : console.log("Ip-Api failed");
+			lat, lon ? success(null, lat, lon) : alert("Ip-Api failed");
 		});
 	}
 
 // Display weather data
 	function displayWeather(data) {
-		var city = data["name"];
-		var temp = data["main"]["temp"];
-		var conditions = data["weather"][0]["main"];
-		var description = data["weather"][0]["description"];
-
+		if (data["name"]) {
+			var city = data["name"];
+			var temp = data["main"]["temp"];
+			var conditions = data["weather"][0]["main"];
+			var description = data["weather"][0]["description"];
+		}
 		$("#city-title").html( city  );
 		$("#city-temp").html( temp  + " F&deg;" );
 		$("#weatherSum").html(  description  );
@@ -80,6 +62,13 @@ $(document).ready(function() {
 		animateWeather(conditions);
 	}  
 
+	$("form").on("submit", function(evt) {
+		evt.preventDefault();
+		var zipUrl = "http://api.openweathermap.org/data/2.5/weather?zip="+
+						$("#zip").val() + 
+						"&APPID=73534e4671149a5202f94d9eaf058256&units=imperial";
+		$.getJSON( zipUrl, function( data ) { displayWeather(data); });
+	});
 
 // buttons to change weather
 	$("#clear-btn").on("click", function() {
@@ -94,21 +83,13 @@ $(document).ready(function() {
 	$("#snow-btn").on("click", function() {
 		animateWeather("Snow") ;
 	});
+	$("#mist-btn").on("click", function() {
+		animateWeather("Mist") ;
+	});
 
-
-// $('#clouds').animate({
-// 	opacity: 0.25,
-// 	left: '+=1400',
-// 	height: 'toggle'
-// }, 5000, 'linear', function() {
-// 	loop();
-// });
+	// hide weather on load
 	$(".weather-icons").hide();
-
-	var $clear = $("#clear"),
-		$rain = $("#rain"),
-		$clouds = $("#clouds"),
-		$snow = $("#snow");
+	
 	// Animate page based on weather 
 	function animateWeather(conditions) {
 		
@@ -116,16 +97,16 @@ $(document).ready(function() {
 		switch(conditions) {
 
 		case "Clear": 
-			$clear.appendTo("#current-weather");
-			$clear.slideDown();
-			$body.switchClass("rain clouds snow", "clear", 2000);
-			
+			$("#clear").appendTo("#current-weather");
+			$("#clear").slideDown();
+			$body.switchClass("rain clouds snow mist", "clear", 1800);
+			animateSun();
 
 			break;
 		case "Rain" :
 			$("#rain").appendTo("#current-weather");
 			$("#rain").slideDown();
-			$body.switchClass("clear clouds snow", "rain", 2000);
+			$body.switchClass("clear clouds snow mist", "rain", 1800);
 			animateRain();
 			break;
 
@@ -133,7 +114,7 @@ $(document).ready(function() {
 			// $("#CurrentWeather").append($("#clouds"));
 			$("#clouds").appendTo("#current-weather");
 			$("#clouds").slideDown();
-			$body.switchClass("clear rain snow", "clouds", 2000);
+			$body.switchClass("clear rain snow mist", "clouds", 1800);
 			animateClouds();
 			break;
 
@@ -141,9 +122,30 @@ $(document).ready(function() {
 			// $("#CurrentWeather").append($("#snow"));
 			$("#snow").appendTo("#current-weather");
 			$("#snow").slideDown();
-			$body.switchClass("clear rain clouds", "snow", 2000);
+			$body.switchClass("clear rain clouds mist", "snow", 1800);
+			animateSnow();
+			break;
+
+		case "Mist":
+			// $("#CurrentWeather").append($("#clouds"));
+			$("#mist").appendTo("#current-weather");
+			$("#mist").slideDown();
+			$body.switchClass("clear rain snow clouds", "mist", 1800);
+			animateMist();
 			break;
 		}
+	}
+
+	function animateSun() {
+		$("#clear-cloud").css({ 
+			opacity:1,
+			marginLeft: "-=50"
+		});
+		$("#clear-cloud").animate({
+			opacity:0,
+			marginLeft: "+=50"
+		}, 2000, "linear");
+		$("#clear-sun").animate({color:"yellow"});
 	}
 
 	function animateRain() {
@@ -151,22 +153,87 @@ $(document).ready(function() {
 			top:0, opacity:0
 		});
 		$("#rain-drop1, #rain-drop3").animate({
-			top: "+=40",
+			top: "+=25",
 			opacity:1
 		},2500, "linear" );
 
 		$("#rain-drop2").animate({
-			top: "+=50",
+			top: "+=60",
 			opacity:0.9
 		},2500, "linear" );
 		
-
 	}
 
 	function animateClouds() {
-		return true;
+		$("#cloud1, #cloud2").css({marginLeft:0});
+		$("#cloud1").animate({
+			marginLeft: 30,
+			color:"dimgray",
+		},1800, "linear" );
+		$("#cloud2").animate({
+			marginLeft: -50,
+			bottom: 15,
+			color: "rgb(56, 56, 56)",
+			opacity: 0.9
+		},1800, "linear" );
+	}
+	
+	function animateSnow() {
+		$("#snow-flake1, #snow-flake2, #snow-flake3").css({
+			color: "blue"
+		});
+		$("#snow-flake1").css({
+			marginLeft: "+=20"
+		}, 1200, "linear");
+		$("#snow-flake2").css({
+			marginLeft: "-=40",
+		}, 1200, "linear");
+		$("#snow-flake3").css({
+			marginLeft: "-=90"
+		}, 1200, "linear");
+
+		$("#snow-flake1").animate({
+			color: "white",
+			marginLeft: "-=20"
+		}, 1200, "linear");
+		$("#snow-flake2").animate({
+			marginLeft: "+=40",
+			color: "#88e1ff"
+		}, 1200, "linear");
+		$("#snow-flake3").animate({
+			color: "#6ab9ff",
+			marginLeft: "+=90"
+		}, 1200, "linear");
 	}
 
+	function animateMist() {
+		$("#mist1, #mist2, #mist3, #mist4").css({
+			marginLeft:0,
+			bottom: 0
+		});
+		$("#mist1").animate({
+			marginLeft: 30,
+			opacity: 0.2,
+			color: "rgb(56, 56, 56)"
+		},1800, "linear" );
+		$("#mist2").animate({
+			marginLeft: -50,
+			bottom: "+=15",
+			color: "rgb(56, 56, 56)",
+			opacity: 0.1
+		},1800, "linear" );
+		$("#mist3").animate({
+			marginLeft: -50,
+			color: "rgb(56, 56, 56)",
+			opacity: 0.3
+		},1800, "linear" );
+		$("#mist4").animate({
+			marginLeft: -50,
+			bottom: "+=8",
+			color: "rgb(56, 56, 56)",
+			opacity: 0.2
+		},1800, "linear" );
+	}
 
 	
 });
