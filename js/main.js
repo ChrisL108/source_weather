@@ -133,6 +133,13 @@ $(document).ready(function() {
 			$body.switchClass("clear rain snow clouds", "mist", 1800);
 			animateMist();
 			break;
+		
+		case "Haze": 
+			// $("#CurrentWeather").append($("#clouds"));
+			$("#mist").appendTo("#current-weather");
+			$("#mist").slideDown();
+			$body.switchClass("clear rain snow clouds", "mist", 1800);
+			animateMist();
 		}
 	}
 
