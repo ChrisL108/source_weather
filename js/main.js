@@ -63,6 +63,7 @@
 			animateWeather(conditions);
 		}
 
+		// Zop Code - build new URL for zip code entry
 		$("form").on("submit", function(evt) {
 			evt.preventDefault();
 			var zipUrl = "http://api.openweathermap.org/data/2.5/weather?zip=" +
