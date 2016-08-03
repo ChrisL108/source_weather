@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta description="weather app that finds weather based on user's latitude and longitude">
-<title>Source Weather</title>
-<!-- Font Awesome -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
-<!-- Font -->
-<link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
-<!-- Custom -->
-<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta description="weather app that finds weather based on user's latitude and longitude">
+	<title>Source Weather</title>
+	<!-- Font Awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<!-- Custom -->
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 
-<!-- GitHub Link -->
-<!--<div id="github">
+	<!-- GitHub Link -->
+	<!--<div id="github">
 	<a href="https://github.com/ChrisL108/source_weather" target="_blank">
 	<i class="fa fa-github fa-lg"></i>
 	</a><span id="contribute">Contribute</span>
 </div>-->
 
-<div id="content-wrapper">
+	<div id="content-wrapper">
 
-	
-	<img id="logo" src="img/logo.png" alt="source-weather-logo">
-		
-	<main>
-		<div id="main-section">
-			<!--Current Weather-->
-			<div id="current-weather"></div>
-			<!-- City -->
-			<span id="city-title">City</span> <br>
-			<span class="glyphicon glyphicon-chevron-down"></span>
-			<!-- Temperature -->
-			<span id="city-temp">Temperature</span> &amp;
-			<span id="weatherSum">Conditions</span>
-		</div><!-- /container -->
-	</main>
 
-	<div id="clear" class="weather-icons">
-		<i id="clear-sun" class="fa fa-sun-o fa-2x spin-slow" aria-hidden="true"></i>
-		<i id="clear-cloud" class="fa fa-cloud fa-3x" aria-hidden="true"></i>
+		<img id="logo" src="img/logo.png" alt="source-weather-logo">
+
+		<main>
+			<div id="main-section">
+				<!--Current Weather-->
+				<div id="current-weather"></div>
+				<!-- City -->
+				<span id="city-title">City</span> <br>
+				<span class="glyphicon glyphicon-chevron-down"></span>
+				<!-- Temperature -->
+				<span id="city-temp">Temperature</span> &amp;
+				<span id="weatherSum">Conditions</span>
+			</div>
+			<!-- /container -->
+		</main>
+
+		<div id="clear" class="weather-icons">
+			<i id="clear-sun" class="fa fa-sun-o fa-2x spin-slow" aria-hidden="true"></i>
+			<i id="clear-cloud" class="fa fa-cloud fa-3x" aria-hidden="true"></i>
+
+		</div>
+		<div id="rain" class="weather-icons">
+			<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+			<i id="rain-drop1" class="fa fa-tint" aria-hidden="true"></i>
+			<i id="rain-drop2" class="fa fa-tint fa-1x" aria-hidden="true"></i>
+			<i id="rain-drop3" class="fa fa-tint fa-2x" aria-hidden="true"></i>
+		</div>
+		<div id="clouds" class="weather-icons">
+			<i id="cloud1" class="fa fa-cloud fa-4x" aria-hidden="true"></i>
+			<i id="cloud2" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+		</div>
+		<div id="snow" class="weather-icons">
+			<i id="snow-flake1" class="fa fa-asterisk fa-4x" aria-hidden="true"></i>
+			<i id="snow-flake2" class="fa fa-asterisk" aria-hidden="true"></i>
+			<i id="snow-flake3" class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
+		</div>
+		<div id="mist" class="weather-icons">
+			<i id="mist1" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+			<i id="mist2" class="fa fa-cloud" aria-hidden="true"></i>
+			<i id="mist3" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+			<i id="mist4" class="fa fa-cloud" aria-hidden="true"></i>
+		</div>
+
+
+
+
+		<form id="zip-wrapper">
+			<label for="zip">Zip Code:</label>
+			<input id="zip" name="zip" type="text"><br>
+			<button class="btn" type="submit">Submit</button>
+		</form>
+		<hr style=" margin: 30px 200px;">
+		<div id="my-buttons">
+			<button class="btn" id="clear-btn">Clear</button>
+			<button class="btn" id="clouds-btn">Clouds</button>
+			<button class="btn" id="rain-btn">Rain</button>
+			<button class="btn" id="snow-btn">Snow</button>
+			<button class="btn" id="mist-btn">Mist / Haze</button>
+		</div>
+
+
 
 	</div>
-	<div id="rain" class="weather-icons">
-		<i class="fa fa-cloud fa-4x" aria-hidden="true"></i>
-		<i id="rain-drop1" class="fa fa-tint" aria-hidden="true"></i>
-		<i id="rain-drop2" class="fa fa-tint fa-1x" aria-hidden="true"></i>
-		<i id="rain-drop3" class="fa fa-tint fa-2x" aria-hidden="true"></i>
-	</div>
-	<div id="clouds" class="weather-icons">
-		<i id="cloud1" class="fa fa-cloud fa-4x" aria-hidden="true"></i>
-		<i id="cloud2" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
-	</div>
-	<div id="snow" class="weather-icons">
-		<i id="snow-flake1" class="fa fa-asterisk fa-4x" aria-hidden="true"></i>
-		<i id="snow-flake2" class="fa fa-asterisk" aria-hidden="true"></i>
-		<i id="snow-flake3" class="fa fa-asterisk fa-2x" aria-hidden="true"></i>
-	</div>
-	<div id="mist" class="weather-icons">
-		<i id="mist1" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
-		<i id="mist2" class="fa fa-cloud" aria-hidden="true"></i>
-		<i id="mist3" class="fa fa-cloud fa-2x" aria-hidden="true"></i>
-		<i id="mist4" class="fa fa-cloud" aria-hidden="true"></i>
-	</div>
-	
+	<!-- /content-wrapper -->
 
 
-
-	<form id="zip-wrapper">
-		<label for="zip">Zip Code:</label>
-		<input id="zip" name="zip" type="text"><br>
-		<button class="btn" type="submit">Submit</button>
-	</form>
-	<hr style=" margin: 30px 200px;">
-	<div id="my-buttons">
-		<button class="btn" id="clear-btn">Clear</button>
-		<button class="btn" id="clouds-btn">Clouds</button>
-		<button class="btn" id="rain-btn">Rain</button>
-		<button class="btn" id="snow-btn">Snow</button>
-		<button class="btn" id="mist-btn">Mist / Haze</button>
-	</div>
-
-
-
-</div> <!-- /content-wrapper -->
-
-
-<!-- jQuery & jQuery UI --> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="js/jquery-color.min.js"></script>
-<script src="js/main.js"></script>
+	<!-- jQuery & jQuery UI -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="js/jquery-color.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 
 </html>
